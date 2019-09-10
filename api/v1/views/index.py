@@ -16,10 +16,10 @@ def uuiui():
 @app_views.route('/api/v1/stats', strict_slashes = False)
 def stats_all():
 
-    classes = ["amenity", "city", "place", "review", "state", "user"]
+    classes = ["Amenity", "City", "Place", "Review", "State", "User"]
     d = {}
 
     for i in classes:
         c = storage.count(i)
-        d[i] = c
+        d[i.lower()] = c
     return d
