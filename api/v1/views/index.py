@@ -2,6 +2,7 @@
 
 from api.v1.views import app_views
 from flask import jsonify
+from models import storage
 import json
 
 @app_views.route('/api/v1/status', strict_slashes = False)
@@ -11,3 +12,14 @@ def uuiui():
     loaded_r = json.loads(r)
 
     return (loaded_r)
+
+@app_views.route('/api/v1/stats', strict_slashes = False)
+def stats_all():
+
+    classes = ["amenity", "city", "place", "review", "state", "user"]
+    d = {}
+
+    for i in classes:
+        c = storage.count(i)
+        d[i] = c
+    return d
