@@ -22,7 +22,8 @@ def states_no_id_post():
     if 'name' not in request.get_json():
         return make_response(jsonify({'error': 'Missing name'}), 400)
 
-    state = State(**request.get_json())
+    json_string_dict = request.get_json()
+    state = State(**json_string_dict)
     state.save()
     return make_response(jsonify(state.to_dict()), 201)
 
@@ -35,7 +36,8 @@ def states_with_id(state_id):
     return jsonify(state.to_dict())
 
 
-@app_views.route('/states/<state_id>', methods=['DELETE'], strict_slashes=False)
+@app_views.route('/states/<state_id>', methods=['DELETE'],
+                 strict_slashes=False)
 def state_id_delete(state_id):
     state = storage.get("State", state_id)
 
@@ -43,7 +45,7 @@ def state_id_delete(state_id):
         abort(404)
     state.delete()
     del state
-    return make_response(jsonify({}), 201)
+    return make_response(jsonify({}), 200)
 
 
 @app_views.route('/states/<state_id>', methods=['PUT'], strict_slashes=False)
