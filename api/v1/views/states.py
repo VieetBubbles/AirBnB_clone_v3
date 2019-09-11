@@ -4,6 +4,7 @@ from flask import Flask, make_response, jsonify, request, abort
 from models import storage
 from models.state import State
 from api.v1.views import app_views
+import sys
 
 
 @app_views.route('/states', methods=['GET'], strict_slashes=False)
@@ -41,7 +42,7 @@ def state_id_delete(state_id):
     if state is None:
         abort(404)
     state.delete()
-    state.save()
+    del state
     return make_response(jsonify({}), 201)
 
 
@@ -55,6 +56,6 @@ def id_put(state_id):
         return make_response(jsonify({'error': 'Not a JSON'}), 400)
     for key, value in request.get_json().items():
         if key not in ['id', 'created_at', 'updated_at']:
-            setatrr(state, key, value)
+            setattr(state, key, value)
     state.save()
     return jsonify(state.to_dict())
