@@ -5,7 +5,8 @@ from flask import jsonify
 from models import storage
 import json
 
-@app_views.route('/status', strict_slashes = False)
+
+@app_views.route('/status', strict_slashes=False)
 def uuiui():
     r = {"status": "OK"}
     r = json.dumps(r)
@@ -13,7 +14,8 @@ def uuiui():
 
     return (loaded_r)
 
-@app_views.route('/stats', strict_slashes = False)
+
+@app_views.route('/stats', strict_slashes=False)
 def stats_all():
 
     classes = ["Amenity", "City", "Place", "Review", "State", "User"]
