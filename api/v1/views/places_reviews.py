@@ -32,18 +32,20 @@ def reviews_no_id_post(place_id):
     """method to add a new dictionary value to the review dictionary"""
     place = storage.get("Place", place_id)
     json_string_dict = request.get_json()
-    user = storage.get("User", json_string_dict['user_id'])
 
     if place is None:
         abort(404)
 
+    if json_string_dict is None:
+        return make_response(jsonify('Not a JSON'), 400)
+
+    if 'user_id' not in json_string_dict:
+        return make_response(jsonify('Missing user_id'), 400)
+
+    user = storage.get("User", json_string_dict['user_id'])
     if user is None:
         abort(404)
 
-    if json_string_dict is None:
-        return make_response(jsonify('Not a JSON'), 400)
-    if 'user_id' not in json_string_dict:
-        return make_response(jsonify('Missing user_id'), 400)
     if 'text' not in json_string_dict:
         return make_response(jsonify('Missing text'), 400)
 
