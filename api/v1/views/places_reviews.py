@@ -5,6 +5,7 @@ from models import storage
 from models.state import State
 from models.city import City
 from models.place import Place
+from models.review import Review
 from api.v1.views import app_views
 import sys
 
@@ -30,8 +31,12 @@ def reviews_no_id_post(place_id):
     """method to add a new dictionary value to the review dictionary"""
     place = storage.get("Place", place_id)
     json_string_dict = request.get_json()
+    user = storage.get("User", json_string_dict['user_id'])
 
     if place is None:
+        abort(404)
+
+    if user is None:
         abort(404)
 
     if json_string_dict is None:
@@ -41,7 +46,7 @@ def reviews_no_id_post(place_id):
     if 'text' not in json_string_dict:
         return make_response(jsonify('Missing text'), 400)
 
-    json_string_dict['user_id'] = user_id
+    json_string_dict['place_id'] = place_id
     review_object = Review(**json_string_dict)
     review_object.save()
     return make_response(jsonify(review_object.to_dict()), 201)
