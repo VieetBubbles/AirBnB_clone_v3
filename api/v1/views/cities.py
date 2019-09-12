@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+"""module for all city routes"""
 from flask import Flask, make_response, jsonify, request, abort
 from models import storage
 from models.state import State
@@ -11,6 +11,7 @@ import sys
 @app_views.route('/states/<state_id>/cities', methods=['GET'],
                  strict_slashes=False)
 def city_no_id_get(state_id):
+    """method to get all cities listed by state in the database"""
     state = storage.get("State", state_id)
 
     if state is None:
@@ -25,6 +26,7 @@ def city_no_id_get(state_id):
 @app_views.route('/states/<state_id>/cities', methods=['POST'],
                  strict_slashes=False)
 def city_no_id_post(state_id):
+    """method to add a new dictionary value to the city dictionary"""
     state = storage.get("State", state_id)
     json_string_dict = request.get_json()
 
@@ -44,6 +46,7 @@ def city_no_id_post(state_id):
 
 @app_views.route('/cities/<city_id>', methods=['GET'], strict_slashes=False)
 def city_with_id(city_id):
+    """method to list a city by state"""
     city = storage.get("City", city_id)
     if city is None:
         abort(404)
@@ -53,6 +56,7 @@ def city_with_id(city_id):
 @app_views.route('/cities/<city_id>', methods=['DELETE'],
                  strict_slashes=False)
 def city_id_delete(city_id):
+    """method to delete a city value from city database"""
     city = storage.get("City", city_id)
 
     if city is None:
@@ -64,6 +68,7 @@ def city_id_delete(city_id):
 
 @app_views.route('/cities/<city_id>', methods=['PUT'], strict_slashes=False)
 def city_id_put(city_id):
+    """method to update a city value with a new value"""
     city = storage.get("City", city_id)
     json_string_dict = request.get_json()
 

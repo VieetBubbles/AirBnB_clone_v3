@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""module for the app.py """
+"""module for the app.py"""
 from flask import Flask, render_template, jsonify, make_response
 from models import storage
 from api.v1.views import app_views
@@ -16,11 +16,13 @@ app.register_blueprint(app_views)
 
 @app.teardown_appcontext
 def teardown_close(error):
+    """method that closes the database"""
     storage.close()
 
 
 @app.errorhandler(404)
 def error_four04(error):
+    """method that raies a 404 error"""
     status_code = 404
     message = {"error": "Not found"}
     return make_response(jsonify(message), status_code)
