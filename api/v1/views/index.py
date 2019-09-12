@@ -20,5 +20,5 @@ def stats_all():
 
     for i in classes:
         c = storage.count(i)
-        d[i.lower()] = c
+        d[i] = c
     return jsonify(d)
