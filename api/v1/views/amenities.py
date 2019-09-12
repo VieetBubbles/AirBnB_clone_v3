@@ -58,7 +58,7 @@ def amenities_id_delete(amenity_id):
 @app_views.route('/amenities/<amenity_id>', methods=['PUT'],
                  strict_slashes=False)
 def amenities_id_put(amenity_id):
-    """method to update a state value inside the database"""
+    """method to update a amenity value inside the database"""
     amenity = storage.get("Amenity", amenity_id)
     json_string_dict = request.get_json()
 
@@ -69,6 +69,6 @@ def amenities_id_put(amenity_id):
 
     for key, value in json_string_dict.items():
         if key not in ['id', 'created_at', 'updated_at']:
-            setattr(state, key, value)
+            setattr(amenity, key, value)
     amenity.save()
     return jsonify(amenity.to_dict())
