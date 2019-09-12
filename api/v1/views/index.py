@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+"""module for the """
 from api.v1.views import app_views
 from flask import jsonify
 from models import storage
@@ -24,4 +24,4 @@ def stats_all():
     for i in classes:
         c = storage.count(i)
         d[i.lower()] = c
-    return d
+    return jsonify(d)

@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+"""module for the app.py """
 from flask import Flask, render_template, jsonify, make_response
 from models import storage
 from api.v1.views import app_views
@@ -26,4 +26,4 @@ def error_four04(error):
     return make_response(jsonify(message), status_code)
 
 if __name__ == "__main__":
-    app.run(host=host, port=port)
+    app.run(host=host, port=port, threaded=True)
