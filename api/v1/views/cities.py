@@ -38,6 +38,7 @@ def city_no_id_post(state_id):
     if 'name' not in json_string_dict:
         return make_response(jsonify('Missing name'), 400)
 
+    json_string_dict['state_id'] = state_id
     city_object = City(**json_string_dict)
     city_object.save()
     return make_response(jsonify(city_object.to_dict()), 201)
