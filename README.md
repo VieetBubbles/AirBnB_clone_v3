@@ -155,7 +155,7 @@ No known bugs at this time.
 
 ## Authors
 Bill Huang - [Github](https://github.com/billhong6981) / [Twitter](https://twitter.com/BillH35534014)
-Je Huang - [Github](https://github.com/jhuang10123) / [Twitter](https://twitter.com/earthtojhuang)
+Jun Zhu - [Github](https://github.com/VieetBubbles) / [Twitter](https://twitter.com/kumablasts)
 
 Second part of Airbnb: Joann Vuong
 ## License
