@@ -56,9 +56,6 @@ class BaseModel:
         """updates the attribute 'updated_at' with the current datetime"""
         self.updated_at = datetime.utcnow()
         models.storage.new(self)
-        if models.storage_t != "db":
-            if "password" in self.__dict__:
-                self.to_dict["password"] = self.__dict__["password"]
         models.storage.save()
 
     def to_dict(self, password=None):
