@@ -160,4 +160,4 @@ Jun Zhu - [Github](https://github.com/VieetBubbles) / [Twitter](https://twitter.
 Forked from: Alexa Orrico - [Github](https://github.com/alexaorrico) / [Twitter](https://twitter.com/alexa_orrico)
 
 ## License
-Public Domain. No copy write protection.
+Public Domain. No copyright protection.
