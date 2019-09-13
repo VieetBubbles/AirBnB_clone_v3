@@ -5,6 +5,8 @@ from models import storage
 from models.state import State
 from models.city import City
 from models.place import Place
+from models.user import User
+from models.review import Review
 from api.v1.views import app_views
 import sys
 
@@ -36,12 +38,18 @@ def reviews_no_id_post(place_id):
 
     if json_string_dict is None:
         return make_response(jsonify('Not a JSON'), 400)
+
     if 'user_id' not in json_string_dict:
         return make_response(jsonify('Missing user_id'), 400)
+
+    user = storage.get("User", json_string_dict['user_id'])
+    if user is None:
+        abort(404)
+
     if 'text' not in json_string_dict:
         return make_response(jsonify('Missing text'), 400)
 
-    json_string_dict['user_id'] = user_id
+    json_string_dict['place_id'] = place_id
     review_object = Review(**json_string_dict)
     review_object.save()
     return make_response(jsonify(review_object.to_dict()), 201)
