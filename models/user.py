@@ -34,4 +34,4 @@ class User(BaseModel, Base):
         """password setter function"""
         if ps == "password":
             word = hashlib.md5(pwd.encode()).hexdigest()
-        super().__setattr__(ps, word)
+            super().__setattr__(ps, word)
