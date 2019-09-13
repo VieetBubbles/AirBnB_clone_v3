@@ -20,7 +20,6 @@ class User(BaseModel, Base):
         places = relationship("Place", backref="user")
         reviews = relationship("Review", backref="user")
 
-        
     else:
         email = ""
         password = ""
@@ -31,15 +30,8 @@ class User(BaseModel, Base):
         """initializes user"""
         super().__init__(*args, **kwargs)
 
-    @property
-    def password(self):
-        """password getter function"""
-        return self.password
-
-    @password.setter
-    def password(self, pwd):
+    def __setattr__(self, ps, word):
         """password setter function"""
-        if pwd is None or type(pwd) is not str:
-            self.password = None
-        else:
-            self.password = hashlib.md5(pwd.encode())
+        if ps == "password":
+            word = hashlib.md5(pwd.encode()).hexdigest()
+        super().__setattr__(ps, word)
