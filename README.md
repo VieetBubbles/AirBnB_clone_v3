@@ -158,6 +158,6 @@ Bill Huang - [Github](https://github.com/billhong6981) / [Twitter](https://twitt
 Jun Zhu - [Github](https://github.com/VieetBubbles) / [Twitter](https://twitter.com/kumablasts)
 
 Forked from: Alexa Orrico - [Github](https://github.com/alexaorrico) / [Twitter](https://twitter.com/alexa_orrico)
-Second part of Airbnb: Joann Vuong
+
 ## License
 Public Domain. No copy write protection.
