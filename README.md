@@ -157,6 +157,7 @@ No known bugs at this time.
 Bill Huang - [Github](https://github.com/billhong6981) / [Twitter](https://twitter.com/BillH35534014)
 Jun Zhu - [Github](https://github.com/VieetBubbles) / [Twitter](https://twitter.com/kumablasts)
 
+Forked from: Alexa Orrico - [Github](https://github.com/alexaorrico) / [Twitter](https://twitter.com/alexa_orrico)
 Second part of Airbnb: Joann Vuong
 ## License
 Public Domain. No copy write protection.
