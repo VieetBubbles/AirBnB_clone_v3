@@ -8,12 +8,11 @@ from flask_cors import CORS
 
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
 host = os.getenv('HBNB_API_HOST', '0.0.0.0')
 port = os.getenv('HBNB_API_PORT', '5000')
 
 app.register_blueprint(app_views)
-CORS(app_views)
 
 
 @app.teardown_appcontext
